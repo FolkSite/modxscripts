@@ -14,15 +14,19 @@ Quick-start scripts for MODX command-line tools.
 * Requires teleport script
 * Only works in the directory containing the core directory (current directory must have a child named "core")
 * First, profile the site:
-    ```
+
+    ```bash
     cd /modx/base/path/
     modx profile
     ```
+
 * To inject the package into a profiled site:
-    ```
+
+    ```bash
     cd /modx/base/path/
     modx inject <package>.trasport.zip
     ```
+
 * View source for more examples   
 
 ## Install gitify script:
