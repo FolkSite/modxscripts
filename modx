@@ -1,0 +1,46 @@
+#!/bin/bash -eu
+
+action=${1:-profile}
+shift
+dir="$(pwd)"
+name="$(basename "$dir")"
+core="$dir/core/"
+[[ -d "$core" ]] || { echo "No modx core found at: $core"; exit 1; }
+profile="$dir/profile/${name}.profile.json"
+
+case $action in
+profile)
+  set -x
+  teleport --action=Profile --name="$name" --core_path="$core"
+  ;;
+garbage)
+  set -x
+  rm -rf ./workspace/"$name"_*-/
+  teleport --action=Packages/GC --profile="$profile"
+  ;;
+extract)
+  tpl=${1:-}
+  [[ -z ${tpl} ]] && { echo "Usage: $0 extract <profile.tpl.json>"; exit 1; }
+  [[ -f ${tpl} ]] || { echo "Usage: $0 extract <profile.tpl.json>"; exit 1; }
+  set -x
+  teleport --action=Extract --profile="$profile" --tpl="$tpl"
+  ;;
+inject)
+  [[ -z ${1:-} ]] && { echo "Usage: $0 inject <pkg.transport.zip>"; exit 1; }
+  [[ -f ${1:-} ]] || { echo "Usage: $0 inject <pkg.transport.zip>"; exit 1; }
+  set -x
+  teleport --action=Inject --profile="$profile" --source="${1}"
+  ;;
+install)
+  gitify modx:install
+  ;;
+upgrade)
+  gitify modx:upgrade
+  ;;
+package)
+  gitify package:install "$@"
+  ;;
+*)
+  echo "Usage: $0 [action] [options...]"
+  exit 1
+esac

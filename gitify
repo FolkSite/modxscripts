@@ -1,0 +1,2 @@
+#!/bin/bash
+php -d disable_functions= /usr/local/lib/Gitify/Gitify "$@"
