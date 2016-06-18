@@ -24,7 +24,7 @@ Quick-start scripts for MODX command-line tools.
 
     ```bash
     cd /modx/base/path/
-    modx inject <package>.trasport.zip
+    modx inject <package>.transport.zip
     ```
 
 * View source for more examples   
