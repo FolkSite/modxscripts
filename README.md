@@ -8,10 +8,17 @@ Quick-start scripts for MODX command-line tools.
 
 * Get teleport.phar from http://modx.s3.amazonaws.com/releases/teleport/teleport.phar
 * Change teleport script to point to the phar file
+* Teleport Documentation: http://modxcms.github.io/teleport/
+
+## Install gitify script:
+
+* Install gitify as instructed in: https://github.com/modmore/Gitify/
+* Edit gitify script to have the correct path
+* Gitify Documentation: https://github.com/modmore/Gitify/wiki
 
 ## Using modx script:
 
-* Requires teleport script
+* This is an example wrapper script - some commands use teleport, others use gitify
 * Only works in the directory containing the core directory (current directory must have a child named "core")
 * First, profile the site:
 
@@ -29,8 +36,4 @@ Quick-start scripts for MODX command-line tools.
 
 * View source for more examples   
 
-## Install gitify script:
-
-* Install gitify as instructed in: https://github.com/modmore/Gitify/
-* Edit gitify script to have the correct path
 
